@@ -56,8 +56,35 @@ public class Main {
                 if (!found) {
                     System.out.println(id + "번 명언은 존재하지 않습니다.");
                 }
+            } else if (cmd.startsWith("수정?id=")){
+                String idStr = cmd.substring("수정?id=".length());
+                int id = Integer.parseInt(idStr);
 
+                boolean found = false;
+                for (int i = 0; i < sayList.size(); i++) {
+                    SayList say = sayList.get(i);
+                    if (say.id == id) {
+                        System.out.println("명언(기존) : " +  say.saying);
+                        System.out.print("명언 : ");
+                        String newSay = sc.nextLine();
 
+                        System.out.println("작가(기존) : " + say.author);
+                        System.out.print("작가 : ");
+                        String newAuthor = sc.nextLine();
+
+                        say.saying = newSay;
+                        say.author = newAuthor;
+
+                        // System.out.println(id +"번 명언이 수정되었습니다.");
+                        found = true;
+                        break;
+                    }
+                }
+
+                if (!found) {
+                    System.out.println(id + "번 명언은 존재하지 않습니다.");
+                }
+                
             }
         }
 
