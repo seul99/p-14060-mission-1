@@ -42,13 +42,19 @@ public class Main {
                 String idStr = cmd.substring("삭제?id=".length());
                 int id = Integer.parseInt(idStr);
 
+                boolean found = false;
                 for (int i = 0; i < sayList.size(); i++) {
                     SayList say = sayList.get(i);
                     if (say.id == id) {
                         sayList.remove(i);
                         System.out.println(id +"번 명언이 삭제되었습니다.");
+                        found = true;
                         break;
                     }
+                }
+
+                if (!found) {
+                    System.out.println(id + "번 명언은 존재하지 않습니다.");
                 }
 
 
