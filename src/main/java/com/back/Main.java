@@ -38,6 +38,20 @@ public class Main {
                     SayList say = sayList.get(i);
                     System.out.println(say.id + " / " + say.author + " / " + say.saying  );
                 }
+            } else if (cmd.startsWith("삭제?id=")) {
+                String idStr = cmd.substring("삭제?id=".length());
+                int id = Integer.parseInt(idStr);
+
+                for (int i = 0; i < sayList.size(); i++) {
+                    SayList say = sayList.get(i);
+                    if (say.id == id) {
+                        sayList.remove(i);
+                        System.out.println(id +"번 명언이 삭제되었습니다.");
+                        break;
+                    }
+                }
+
+
             }
         }
 
