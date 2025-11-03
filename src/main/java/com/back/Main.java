@@ -1,11 +1,14 @@
 package com.back;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         System.out.println("== 명언 앱 ==");
         Scanner sc = new Scanner(System.in);
+        List<SayList> sayList = new ArrayList<>();
         int number = 1;
 
         while(true){
@@ -23,9 +26,18 @@ public class Main {
                 System.out.print("작가 : ");
                 String author = sc.nextLine();
 
+                sayList.add(new SayList(number, saying, author));
                 System.out.println(number + "번 명언이 등록되었습니다.");
                 number++;
 
+            } else if (cmd.equals("목록")){
+                System.out.println("번호 / 작가 / 명언");
+                System.out.println("--------------------");
+
+                for (int i = sayList.size() - 1; i >= 0; i--) {
+                    SayList say = sayList.get(i);
+                    System.out.println(say.id + " / " + say.author + " / " + say.saying  );
+                }
             }
         }
 
